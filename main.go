@@ -7,5 +7,8 @@ import (
 )
 
 func main() {
-	fmt.Println(solutions.Cats(2, 4))
+	// fmt.Println(solutions.Cats(2, 5))
+	// fmt.Println(solutions.SevenWondersScience(1, 6, 9))
+	// fmt.Println(solutions.IsNegativeZero(-0.0))
+	fmt.Println(solutions.PrinterError("aaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbmmmmmmmmmmmmmmmmmmmxyz"))
 }
