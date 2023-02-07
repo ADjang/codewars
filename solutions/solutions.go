@@ -45,15 +45,6 @@ func SevenWondersScience(compasses int, gears int, tablets int) int {
 	return total
 }
 
-func IsNegativeZero(n float64) bool {
-	a := 1.0 / math.Inf(-1)
-	if a == -0 {
-		return true
-	} else {
-		return false
-	}
-}
-
 func PrinterError(s string) string {
 	count := 0
 	for _, v := range s {
