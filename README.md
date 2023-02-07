@@ -1,2 +1,1 @@
-# ars_go
-golang
+<h1>Solutions for codewars</h1>
