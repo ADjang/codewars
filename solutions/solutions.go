@@ -1,8 +1,10 @@
 package solutions
 
 import (
+	"fmt"
 	"math"
 	"strconv"
+	"strings"
 )
 
 func Cats(start, finish int) int {
@@ -53,4 +55,90 @@ func PrinterError(s string) string {
 		}
 	}
 	return strconv.Itoa(count) + "/" + strconv.Itoa(len(s))
+}
+
+func Collatz(n int) int {
+	i := 0
+	for n != 1 {
+		if n%2 == 0 {
+			n = n / 2
+		} else {
+			n = n*3 + 1
+		}
+		i++
+	}
+	i++
+	return i
+}
+
+func Gps(s int, x []float64) int {
+	if len(x) <= 1 {
+		return 0
+	}
+	v := 0.0
+	arr := []float64{}
+	vel := []float64{}
+	for i := 0; i < len(x); i++ {
+		if i != len(x)-1 {
+			arr = append(arr, x[i+1]-x[i])
+		}
+	}
+	for i := 0; i < len(arr); i++ {
+		v = (3600 * arr[i]) / float64(s)
+		vel = append(vel, v)
+	}
+	max := vel[0]
+	for _, speed := range vel {
+		if speed > max {
+			max = speed
+		}
+	}
+	return int(max)
+}
+
+func Vaporcode(s string) string {
+	str := strings.ToUpper(s)
+	str = strings.Trim(str, "\t \f \v 10")
+	r := []rune(str)
+	vapor := ""
+	for i := 0; i < len(r); i++ {
+		if i != len(r)-1 && r[i] != ' ' {
+			vapor += string(r[i]) + "  "
+		} else if i == len(r)-1 && r[i] != ' ' {
+			vapor += string(r[i])
+		}
+	}
+	return vapor
+}
+
+func FindNextSquare(sq int64) int64 {
+	if check(math.Sqrt(float64(sq))) {
+		return -1
+	} else {
+		for i := sq; ; i++ {
+			//   0, 1, 4, 5, 6, 9
+			if check(math.Sqrt(float64(i))) {
+				return int64(i)
+			}
+		}
+	}
+}
+
+func check(n float64) bool {
+	num := strconv.FormatFloat(float64(n), 10, -1, 64)
+	fmt.Println(num)
+	if IsDigitsOnly(num) {
+		return num[len(num)-1] == '0' || num[len(num)-1] == '1' || num[len(num)-1] == '4' || num[len(num)-1] == '5' || num[len(num)-1] == '6' || num[len(num)-1] == '9'
+	} else {
+		return false
+	}
+}
+
+func IsDigitsOnly(s string) bool {
+	for _, c := range s {
+		if c < '0' || c > '9' {
+			return false
+		}
+	}
+	return true
 }
