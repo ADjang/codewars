@@ -142,3 +142,41 @@ func IsDigitsOnly(s string) bool {
 	}
 	return true
 }
+
+func MergeArrays(arr1, arr2 []int) []int {
+	arr := arr1
+	union := []int{}
+	for j := 0; j < len(arr2); j++ {
+		arr = append(arr, arr2[j])
+	}
+
+	// sorting
+	k := len(arr)
+	for k != 0 {
+		for j := 0; j < len(arr); j++ {
+			if j != len(arr)-1 && arr[j+1] < arr[j] {
+				arr[j+1], arr[j] = arr[j], arr[j+1]
+			}
+		}
+		k--
+	}
+
+	for i := 0; i < len(arr); i++ {
+		if i != len(arr)-1 && arr[i] != arr[i+1] {
+			union = append(union, arr[i])
+		} else if i == len(arr)-1 {
+			union = append(union, arr[i])
+		}
+	}
+	return union
+}
+
+func ContainsInt(a int, b []int) bool {
+	for j := 0; j < len(b); j++ {
+		if a == b[j] {
+			return true
+		}
+	}
+
+	return false
+}
