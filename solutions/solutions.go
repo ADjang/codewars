@@ -247,3 +247,24 @@ func OrderedCount(text string) []Tuple {
 	}
 	return tu
 }
+
+func DigitalRoot(n int) int {
+	var sum, m int
+	sum2 := 0
+	num := strconv.Itoa(n)
+	for _, v := range num {
+		m, _ = strconv.Atoi(string(v))
+		sum += m
+	}
+	if sum < 10 {
+		return sum
+	} else {
+
+		num := strconv.Itoa(sum)
+		for _, v := range num {
+			m, _ = strconv.Atoi(string(v))
+			sum2 += m
+		}
+	}
+	return sum2
+}

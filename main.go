@@ -17,5 +17,6 @@ func main() {
 	// fmt.Println(solutions.FindNextSquare(144))
 	// fmt.Println(solutions.MergeArrays([]int{1, 3, 5, 7, 9, 11, 12}, []int{1, 2, 3, 4, 5, 10, 12}))
 
-	fmt.Println(solutions.OrderedCount("abracadabra"))
+	// fmt.Println(solutions.OrderedCount("abracadabra"))
+	fmt.Println(solutions.DigitalRoot(942))
 }
