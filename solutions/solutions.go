@@ -180,3 +180,70 @@ func ContainsInt(a int, b []int) bool {
 
 	return false
 }
+
+func wave(words string) []string {
+	s := ""
+	arr := []string{}
+	index := []int{}
+	k := 0
+
+	for i := 0; i < len(words); i++ {
+		if words[i] >= 'a' && words[i] <= 'z' {
+			k++
+			index = append(index, i)
+		}
+	}
+
+	for i := 0; i < k; i++ {
+
+		for j := 0; j < len(words); j++ {
+			if words[j] >= 'a' && words[j] <= 'z' {
+				if j == index[i] {
+					s += string(rune(words[j] - 32))
+				} else {
+					s += string(rune(words[j]))
+				}
+			} else {
+				s += string(rune(words[j]))
+			}
+		}
+		arr = append(arr, s)
+		s = ""
+	}
+	return arr
+}
+
+type Tuple struct {
+	Char  string
+	Count int
+}
+
+func OrderedCount(text string) []Tuple {
+	num := 0
+	s := []rune(text)
+	check := ""
+	var pair Tuple
+	var tu []Tuple
+	if len(text) == 0 {
+		return []Tuple{}
+	}
+	for i := 0; i < len(s); i++ {
+		for j := i; j < len(s); j++ {
+			if !strings.Contains(check, string(s[j])) {
+				check += string(s[j])
+			}
+		}
+	}
+	for i := 0; i < len(check); i++ {
+		for j := 0; j < len(s); j++ {
+			if rune(check[i]) == s[j] {
+				num++
+			}
+		}
+		pair.Char = string(check[i])
+		pair.Count = num
+		tu = append(tu, pair)
+		num = 0
+	}
+	return tu
+}
